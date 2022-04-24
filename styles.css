@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;;
+    cursor: pointer;
+    font-size: calc(14px + (18 - 4)* ((100vw - 300px)/(1400-300)));
+}
+
+a {text-decoration: none;}
+
+html{
+    scroll-behavior: smooth;
+}
+    
+
+/*HEADER*/
+.header {
+    position:fixed;
+    width: 100%;
+    height: 45px;
+    padding:0.1rem;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.51);
+    z-index: 3;
+    
+}
+/*Logo*/
+
+.logo {
+    display: flex;
+    width: 15%;
+    height: 4vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 2px;
+    border: thin solid rgba(255, 255, 255, 0.665);
+    font-weight: bold;
+}
+
+/*BOTON DE HAMBURGUESA*/
+/*Este Sera el contenedor que tiene adentro a los 3 span*/
+.lbl-menu {
+    width: 15%;
+    height: 4vh;
+    display: flex;
+    position: relative;
+    left: 18px;
+    top: 5px;
+}
+
+/*Aca doy estilos a los span*/    
+.lbl-menu #span1, #span2, #span3{
+    content: "";
+    position: absolute;
+    width:100% ;
+    height: 4px;
+    max-width: 28px;
+    min-width: 26px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: opacity 400ms ease, transform 500ms ease;
+}  
+
+#span2 {
+    top: 0.53em;
+}
+#span3 {
+    top: 1.2em;
+}
+/*Aca estoy ocultando el checkbox*/
+#off-canvas-btn{
+    display: none;
+}
+/*Animacion en forma de X*/
+#off-canvas-btn:checked ~ .lbl-menu #span1{
+    transform: rotate(60deg);
+    top: 10px;
+}
+#off-canvas-btn:checked ~ .lbl-menu #span2{
+    opacity: 0;
+
+}
+#off-canvas-btn:checked ~ .lbl-menu #span3{
+    transform: rotate(-60deg);
+    top: 10px;
+}
+
+@media screen and (max-width:30em) {
+    .off-canvas-menu {
+        display: none;
+    }
+}
+@media  screen and (min-width:30em) {
+    .lbl-menu { display: none;}
+}
+
+.off-canvas-menu {
+    display: inline;
+}
+
+/*Estilos para los links*/
+.off-canvas-menu a{
+    margin: 1rem ;
+    padding: 0.3rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.off-canvas-menu a:hover {
+    border-bottom: 1px solid rgba(0, 255, 255, 0.751);
+    transition: border-bottom 1s ease;
+}
+/* agrego una media para que el menu tenga estilos en mobil*/
+@media screen and (max-width:30em) {
+    .header {
+        justify-content: space-between;
+    }
+    .off-canvas-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:99vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.865);
+        z-index: -1; /*Para que el meni quede por debajo del boton*/
+        opacity: 1;
+        transform: translate(-100%, 0);
+        transition: transform 400ms ease;
+    }
+    .off-canvas-menu a {
+        color: #fff;
+        padding: 0.8rem;
+        font-size: 1rem;
+        background-color: transparent;
+        /*border-bottom: 1px solid rgb(60, 59, 59);*/
+    }
+    .off-canvas-menu a:hover {
+        color: cyan;
+    }
+}
+/*0, -100% El menu sale desde arriba
+0, 100% El menu sale de abajo
+100%, 0 El menu sale de la derecha
+-100%, 0 El menu sale de la izquierda
+*/
+        
+ /*Estilos para que el menu salga a su posicion original*/   
+#off-canvas-btn:checked ~ .off-canvas-menu{
+    transform: translate(0, 0);
+}
+
+/*Estilos para el Hero*/
+
+.hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 50vh;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url(assets/salad-2068220_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: 1;
+}   
+
+.container {
+    /*position:absolute;*/
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: auto;
+    top: 11%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container>*{
+   text-align: center;
+}
+
+.container h1 {
+    color:#fff;
+    margin:0;
+}
+
+.container div {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.container a {
+    display: block;
+    width: 30%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(6, 226, 226);
+    border-radius: 4px;
+    border: 1.5px solid white;
+}
+
+.container a:hover{
+    color:white;
+    border: 1px solid rgb(6, 226, 226);
+}
+
+/*CONTENIDO PRINCIPAL*/
+
+.container-main {
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background-color: rgba(52, 51, 51, 0.2);
+}
+
+.nuestra-comida {
+    background-color: rgb(30,30,30);
+    color: white;
+    text-align: center;
+}
+
+.nuestra-comida .container-section {
+    padding: 20px 0;
+}
+
+.nuestra-comida p {
+    display: none;
+}
+
+.container-section a {
+    text-decoration: none;
+    padding: 0 5px;
+    color: rgb(9, 194, 194);
+    font-weight: bold;
+    border: 1.5px solid white;
+    border-radius: 2px;
+}
+
+.nuestra-comida .card {
+    background-position: center center;
+    background-size: cover;
+    padding: 50px 0px;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.card:first-child {
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("assets/pizza-4215445_1280.jpg");
+
+}
+
+.card:nth-child(2){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("assets/spanish-paella-4459519_1280.jpg");
+
+}
+
+.card:nth-child(3) {
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("assets/beans-6383380_1280.jpg");
+
+}
+
+#caracteristicas .container-ca{
+    text-align: center;
+    padding: 90px 12px;
+}
+
+#caracteristicas li{
+    list-style:none ;
+    margin: 16px 0px;
+    font-weight: bold;
+}
+
+footer{
+    background-color: rgb(230,230,230);
+}
+
+footer p{
+    margin: 0;
+    padding: 12px;
+    color: rgb(100,100,100);
+}
+
+footer .container-fo{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+@media (min-width: 850px) {
+    .nuestra-comida .container-section {
+        display: flex;
+        justify-content: center
+    }
+    .container-section p {
+        display: block;
+    }
+    .nuestra-comida h3 {
+        color: rgb(9, 194, 194);
+    }
+
+    .nuestra-comida .card {
+        padding: 40px;
+        background-size: 100% 300px;
+        background-repeat: no-repeat;
+        background-position-y: 0;
+        background-color: rgba(50, 50, 50, 1);
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+}
